@@ -4,6 +4,7 @@ from pkgutil import get_data
 from functools import wraps
 import six
 
+import ruamel.yaml as yaml
 from ruamel.yaml import load as load_yaml
 
 from .utils import registry
@@ -44,7 +45,8 @@ class Settings(object):
     def _get_settings_from_yaml(cls):
         if not cls._yaml_data:
             data = get_data('data', 'settings.yaml')
-            cls._yaml_data = load_yaml(data).pop('settings', {})
+            cls._yaml_data = load_yaml(data,
+                                       Loader=yaml.Loader).pop('settings', {})
         return cls._yaml_data
 
     def _updateall(self, iterable):
