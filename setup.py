@@ -27,7 +27,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'python-dateutil',
-        'ruamel.yaml',
+        'ruamel.yaml==0.15.100',
         'jdatetime',
         'umalqurra',
         'pytz',
